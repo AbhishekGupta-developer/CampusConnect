@@ -34,10 +34,6 @@ public class StudentServlet extends HttpServlet {
 
         List<Student> studentList = studentDAO.getAllStudents();
 
-        for(Student student: studentList) {
-            System.out.println("Name: " + student.getName());
-        }
-
         request.setAttribute("students", studentList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("viewStudents.jsp");
         requestDispatcher.forward(request, response);
