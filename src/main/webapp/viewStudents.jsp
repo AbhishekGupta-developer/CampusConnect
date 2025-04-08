@@ -9,6 +9,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Course</th>
+        <th>Update</th>
     </tr>
 <%
         List<Student> studentList = (List<Student>) request.getAttribute("students");
@@ -21,6 +22,7 @@
                     <td><%= s.getName() %></td>
                     <td><%= s.getEmail() %></td>
                     <td><%= s.getCourse() %></td>
+                    <td><a href="editStudent.jsp?id=<%= s.getId() %>">Update</a></td>
                 </tr>
 <%
             }

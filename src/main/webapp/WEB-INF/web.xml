@@ -22,4 +22,13 @@
     <servlet-name>StudentServlet</servlet-name>
     <url-pattern>/StudentServlet</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditStudentServlet</servlet-name>
+    <servlet-class>com.myorganisation.servlet.EditStudentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditStudentServlet</servlet-name>
+    <url-pattern>/EditStudentServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -66,4 +66,39 @@ public class StudentDAO {
         return studentList;
     }
 
+    public Student getStudentById(int id) {
+        Student student = new Student();
+        try {
+            String sql = "SELECT * FROM student WHERE id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()) {
+                student.setId(resultSet.getInt("id"));
+                student.setName(resultSet.getString("name"));
+                student.setEmail(resultSet.getString("email"));
+                student.setCourse(resultSet.getString("course"));
+            }
+        } catch(SQLException e) {
+            System.out.println("An exception occurred (SQLException): " + e.getMessage());
+        }
+
+        return student;
+    }
+
+    public void updateStudent(Student student) {
+        try {
+            String sql = "UPDATE student SET name=?, email=?, course=? WHERE id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, student.getName());
+            preparedStatement.setString(2, student.getEmail());
+            preparedStatement.setString(3, student.getCourse());
+            preparedStatement.setInt(4, student.getId());
+            preparedStatement.executeUpdate();
+        } catch(SQLException e) {
+            System.out.println("An exception occurred (SQLException): " + e.getMessage());
+        }
+    }
+
 }
