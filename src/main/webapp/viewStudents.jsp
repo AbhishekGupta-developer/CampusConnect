@@ -1,3 +1,6 @@
+<%@
+    page import="java.util.*, com.myorganisation.model.Student"
+%>
 
 <h2>Student List</h2>
 <table border="1">
@@ -7,12 +10,26 @@
         <th>Email</th>
         <th>Course</th>
     </tr>
-    <c:forEach var="s" items="${students}">
-        <tr>
-            <td>${s.id}</td>
-            <td>${s.name}</td>
-            <td>${s.email}</td>
-            <td>${s.course}</td>
-        </tr>
-    </c:forEach>
+<%
+        List<Student> studentList = (List<Student>) request.getAttribute("students");
+
+        if(studentList != null && !studentList.isEmpty()) {
+            for(Student s : studentList) {
+%>
+                <tr>
+                    <td><%= s.getId() %></td>
+                    <td><%= s.getName() %></td>
+                    <td><%= s.getEmail() %></td>
+                    <td><%= s.getCourse() %></td>
+                </tr>
+<%
+            }
+        } else {
+%>
+            <tr>
+                <td colspan="4">No Students Found!</td>
+            </tr>
+<%
+        }
+%>
 </table>
