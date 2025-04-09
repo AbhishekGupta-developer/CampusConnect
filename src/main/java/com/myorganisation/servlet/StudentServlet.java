@@ -26,7 +26,7 @@ public class StudentServlet extends HttpServlet {
         StudentDAO studentDAO = new StudentDAO();
         studentDAO.addStudent(student);
 
-        response.sendRedirect("viewStudents.jsp");
+        response.sendRedirect("StudentServlet");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
