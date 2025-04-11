@@ -101,4 +101,15 @@ public class StudentDAO {
         }
     }
 
+    public void removeStudent(Integer id) {
+        try {
+            String sql = "DELETE FROM student WHERE id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch(SQLException e) {
+            System.out.println("An exception occurred (SQLException): " + e.getMessage());
+        }
+    }
+
 }
