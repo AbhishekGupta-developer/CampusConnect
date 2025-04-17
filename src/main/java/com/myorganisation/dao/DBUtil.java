@@ -10,7 +10,7 @@ public class DBUtil {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String dbUrl = "jdbc:mysql://localhost:3306/campusconnectdb?createDatabaseIfNotExist=true";
             String dbUser = "root";
-            String dbPassword = "root";
+            String dbPassword = "qwerty";
             return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         } catch(ClassNotFoundException e) {
             System.out.println("An exception occurred (ClassNotFoundException): " + e.getMessage());

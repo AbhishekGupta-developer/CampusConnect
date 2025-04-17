@@ -10,18 +10,12 @@ public class StudentDAO {
     Connection connection = DBUtil.getConnection();
 
     public void createTable() {
-        String sql =
-                "CREATE TABLE IF NOT EXISTS student (" +
-                "id INT PRIMARY KEY AUTO_INCREMENT, " +
-                "name VARCHAR(100)," +
-                "email VARCHAR(100)," +
-                "course VARCHAR(100)" +
-                ")";
+        String sql = "CREATE TABLE IF NOT EXISTS student (" + "id INT PRIMARY KEY AUTO_INCREMENT, " + "name VARCHAR(100)," + "email VARCHAR(100)," + "course VARCHAR(100)" + ")";
 
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println("An exception occurred (SQLException): " + e.getMessage());
         }
     }
@@ -36,7 +30,7 @@ public class StudentDAO {
             preparedStatement.setString(3, student.getCourse());
 
             preparedStatement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println("An exception occurred (SQLException): " + e.getMessage());
         }
     }
@@ -49,7 +43,7 @@ public class StudentDAO {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 Student student = new Student();
 
                 student.setId(resultSet.getInt("id"));
@@ -59,7 +53,7 @@ public class StudentDAO {
 
                 studentList.add(student);
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println("An exception occurred (SQLException): " + e.getMessage());
         }
 
@@ -74,13 +68,13 @@ public class StudentDAO {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 student.setId(resultSet.getInt("id"));
                 student.setName(resultSet.getString("name"));
                 student.setEmail(resultSet.getString("email"));
                 student.setCourse(resultSet.getString("course"));
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println("An exception occurred (SQLException): " + e.getMessage());
         }
 
@@ -96,7 +90,7 @@ public class StudentDAO {
             preparedStatement.setString(3, student.getCourse());
             preparedStatement.setInt(4, student.getId());
             preparedStatement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println("An exception occurred (SQLException): " + e.getMessage());
         }
     }
@@ -107,7 +101,8 @@ public class StudentDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
-        } catch(SQLException e) {
+
+        } catch (SQLException e) {
             System.out.println("An exception occurred (SQLException): " + e.getMessage());
         }
     }
